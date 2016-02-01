@@ -287,11 +287,5 @@ $.ajax({
 ```
 
 ## Wine Manager API Lab
-- In this lab we will be using an API located at `http://daretodiscover.herokuapp.com` to build a wine manager system.
-- The HTML is already done for you and can be downloaded [here](wine_manager_html/).
-- Here are the API endpoints:
-	- `GET /wines` -> Get all wines
-	- `POST /wines` -> Create a new wine
-	- `GET /wines/:id` -> Get a specific wine
-	- `PUT /wines/:id` -> Update a wine
-	- `DELETE /wines/:id` -> Delete a wine
+- In this lab we will be using an API located at `https://myapi.profstream.com` to build a user manager system.
+- Your job is to use the user API to create a simple UI to display all of the users and a form to add a new user.

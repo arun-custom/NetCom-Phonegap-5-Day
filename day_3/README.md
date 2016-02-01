@@ -53,17 +53,6 @@ cordova create hello com.example.hello HelloWorld
 - Most of the major native functionality is wrapped into various plugins, such as accessing the camera or pulling from the GPS.
 - Let's take a look at the plugin registry to see what's available to use. It can be found [here](http://cordova.apache.org/docs/en/4.0.0/cordova_plugins_pluginapis.md.html).
 
-## deviceready
-- It is important to note that all of the Cordova plugins require the device to be ready before they can be accessed.
-- Cordova provides us an event called `deviceready` that signals to our application that we can safely call Cordova commands.
-- The syntax is exactly the same as any other event listener:
-
-```javascript
-document.addEventListener("deviceready", function() {
-	//Device is ready and you can use Cordova
-});
-```
-
 ## Building Your App
 - Building the app is pretty trivial if you have all of the utilities set up.
 - There are a couple of command line tools to help us with this:
@@ -84,6 +73,21 @@ cordova emulate android
 - This will attempt to open the default emulator for the build type. This works well on Android but requires additional software for iOS.
 - It is recommended to work through Xcode when running and debugging iOS apps.
 
+## Emulating Your App
+- Using your new app on your actual device is an important testing step.
+- We will download the Phonegap Developer app from the iTunes store to display the app on our device.
+
+## deviceready
+- It is important to note that all of the Cordova plugins require the device to be ready before they can be accessed.
+- Cordova provides us an event called `deviceready` that signals to our application that we can safely call Cordova commands.
+- The syntax is exactly the same as any other event listener:
+
+```javascript
+document.addEventListener("deviceready", function() {
+	//Device is ready and you can use Cordova
+});
+```
+
 ## Using the Device Camera
 - Let's take a look at the documentation [here](http://plugins.cordova.io/#/package/org.apache.cordova.camera).
 - We need to first use the Cli to install the plugin:
@@ -94,13 +98,13 @@ cordova plugin add org.apache.cordova.camera
 
 - This plugin adds an object to the `navigator` global object called `camera` that has methods associated with it:
 
-```
+```javascript
 navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
 ```
 
 - Here is an example from the documentation with an option and all appropriate callbacks:
 
-```
+```javascript
 navigator.camera.getPicture(onSuccess, onFail, {
 	quality: 50,
 	destinationType: Camera.DestinationType.FILE_URI 
@@ -118,7 +122,7 @@ function onFail(message) {
 
 - There are a number of options you can set to customize the camera action to your needs:
 
-```
+```javascript
 { 
 	quality : 75,
 	destinationType : Camera.DestinationType.DATA_URL,
@@ -136,19 +140,15 @@ function onFail(message) {
 
 ## In-Class Exercise: The Social Network
 - We will be creating a user manager app in class that will utilize a few Cordova APIs.
-- To start though, let's take some time and create a front-end for the application using AngularJS with HTML and CSS.
-- Your front end must have a user registration page that takes in a first name, last name, email, and profile picture.
-- On the registration page your app should have two options - take a new photo and select a photo from the camera roll.
-- When a user selects a photo have the app display the photo in an element of your choice.
-- It must also have a user list page where you can view all of the users in the database.
-- Lastly, the app must have a user detail page that provides information about a specific user.
+- The front end has already been completed for you [here](social_network_starter_app/).
+- Your job is to activate the functionality using the MyAPI Members endpoint.
 - Here are the API endpoints you will need:
 	- `GET /members` -> Retrieve all members
 	- `GET /members/:id` -> Get one member
 	- `POST /members` -> Create a new member
 	- `PUT /members/:id` -> Update a member
 	- `DELETE /members/:id` -> Delete a member
-- **Bonus:** Implement Angular animations to smoothly transition between pages.
+- **Bonus:** Implement different jQuery Mobile transitions to smoothly navigate between pages.
 
 ## FileTransfer API
 - The FileTransfer API allows you to upload and download files using the native device.
@@ -163,13 +163,13 @@ cordova plugin add org.apache.cordova.file-transfer
 - This plugin offers a new constructor function `FileTransfer` that gives you methods for uploading and downloading the files.
 - To use the plugin we have to create an instance of the constructor:
 
-```
+```javascript
 var ft = new FileTransfer();
 ```
 
 - You will likely need to set a number of options to configure your file transfer:
 
-```
+```javascript
 var options = {
 	fileKey: "file",
 	fileName: "sample",
@@ -180,7 +180,7 @@ var options = {
 
 - We can then call on the file transfer functions such as upload:
 
-```
+```javascript
 ft.upload(fileURL, encodeURI("url here"), success, error, options);
 ```
 
@@ -198,7 +198,7 @@ ft.upload(fileURL, encodeURI("url here"), success, error, options);
 - The contacts API appends to the `navigator` global object to apply its methods.
 - The first method we will look at is the `create()` function that creates a new contact:
 
-```
+```javascript
 var myContact = navigator.contacts.create({"displayName": "Test User"});
 ```
 
