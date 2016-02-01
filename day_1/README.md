@@ -286,6 +286,6 @@ $.ajax({
 });
 ```
 
-## User Manager API Lab
-- In this lab we will be using an API located at `https://myapi.profstream.com` to build a user manager system.
-- Your job is to use the user API to create a simple UI to display all of the users and a form to add a new user.
+## Person Manager API Lab
+- In this lab we will be using an API located at `https://myapi.profstream.com` to build a person manager system.
+- Your job is to use the Person API to create a simple UI to display all of the people and a form to add a new person.
